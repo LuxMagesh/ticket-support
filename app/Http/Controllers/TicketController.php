@@ -13,7 +13,7 @@ class TicketController extends Controller
     public function redirect(Request $request)
     {
         $query = Ticket::query();
-        $tickets = Ticket::all();
+        // $tickets = Ticket::all();
         $dateFilter = $request->date_filter;
 
         switch($dateFilter){
@@ -43,11 +43,15 @@ class TicketController extends Controller
                 break;                       
         }
             
-        // $employees = $query->get();
+        $tickets = $query->orderBy('name','DESC')->get();
+            // ->orderBy('name', 'asc')
+            // ->orderBy(column: 'ticket.created_at')
+            // ->orderBy(column: 'ticket.status')
+            // ->paginate(perPage: 5);
 
-        // return response()->view('index',compact('employees','dateFilter'));
+        return response()->view('tickets.index',compact('tickets','dateFilter'));
        
-        return view('tickets.index', compact('tickets','dateFilter'));
+        // return view('tickets.index', compact('tickets','dateFilter'));
     }
 
     /**
@@ -58,7 +62,7 @@ class TicketController extends Controller
     public function index(Request $request)
     {
         $query = Ticket::query();
-        $tickets = Ticket::all();
+        // $tickets = Ticket::all();
         $dateFilter = $request->date_filter;
 
         switch($dateFilter){
@@ -88,11 +92,15 @@ class TicketController extends Controller
                 break;                       
         }
             
-        // $employees = $query->get();
+        $tickets = $query->get();
+            // ->orderBy(column: 'ticket.name')
+            // ->orderBy(column: 'ticket.created_at')
+            // ->orderBy(column: 'ticket.status')
+            // ->paginate(perPage: 5);
 
-        // return response()->view('index',compact('employees','dateFilter'));
+        return response()->view('tickets.index',compact('tickets','dateFilter'));
        
-        return view('tickets.index', compact('tickets','dateFilter'));
+        // return view('tickets.index', compact('tickets','dateFilter'));
     }
 
     /**
@@ -128,9 +136,47 @@ class TicketController extends Controller
         $tickets->location=$debug_export;
 
         $tickets->save();
+        $query = Ticket::query();
+        // $tickets = Ticket::all();
+        $dateFilter = $request->date_filter;
 
-        $tickets = Ticket::all();
-        return view('tickets.index', compact('tickets'));
+        switch($dateFilter){
+            case 'today':
+                $query->whereDate('created_at',Carbon::today());
+                break;
+            case 'yesterday':
+                $query->wheredate('created_at',Carbon::yesterday());
+                break;
+            case 'this_week':
+                $query->whereBetween('created_at',[Carbon::now()->startOfWeek(),Carbon::now()->endOfWeek()]);
+                break;
+            case 'last_week':
+                $query->whereBetween('created_at',[Carbon::now()->subWeek(),Carbon::now()]);
+                break;
+            case 'this_month':
+                $query->whereMonth('created_at',Carbon::now()->month);
+                break;
+            case 'last_month':
+                $query->whereMonth('created_at',Carbon::now()->subMonth()->month);
+                break;
+            case 'this_year':
+                $query->whereYear('created_at',Carbon::now()->year);
+                break;
+            case 'last_year':
+                $query->whereYear('created_at',Carbon::now()->subYear()->year);
+                break;                       
+        }
+            
+        $tickets = $query->get();
+            // ->orderBy(column: 'ticket.name')
+            // ->orderBy(column: 'ticket.created_at')
+            // ->orderBy(column: 'ticket.status')
+            // ->paginate(perPage: 5);
+
+        return response()->view('tickets.index',compact('tickets','dateFilter'));
+
+        // $tickets = Ticket::all();
+        // return view('tickets.index', compact('tickets'));
 
     }
 

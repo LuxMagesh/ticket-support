@@ -65,6 +65,7 @@
               <th scope="col">Description</th>
               <th scope="col">Status</th>
               <th scope="col">Logged By</th>
+              <th scope="col">Date Logged</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -76,6 +77,7 @@
                 <td> {{$ticketss->description}} </td>
                 <td> {{$ticketss->status}} </td>
                 <td> {{$ticketss->name}} </td>
+                <td> {{$ticketss->created_at}} </td>
                 <td> <a href="tickets/{{ $ticketss->id}}" class="btn btn-info">Update</a> </td>
               </tr>
             @endforeach
