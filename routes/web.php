@@ -19,6 +19,7 @@ route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('show')
 route::post('/tickets/{ticket}', [TicketController::class, 'update'])->name('update');
 route::get('/create', [TicketController::class, 'create'])->name('create');
 route::post('/create', [TicketController::class, 'add'])->name('add');
+route::get('/complex', [TicketController::class, 'complex'])->name('complex');
 route::get('/tickets/delete/{ticket}', [TicketController::class, 'delete'])->name('delete');
 route::post('/tickets', [TicketController::class, 'filter'])->name('filter');
 

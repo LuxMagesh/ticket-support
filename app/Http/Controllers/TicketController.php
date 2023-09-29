@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\Personal_Details;
+use App\Models\InfoDetails;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Collection;
 use Stevebauman\Location\Facades\Location;
@@ -112,6 +114,56 @@ class TicketController extends Controller
     {
             return view('tickets.create');
             
+    }
+
+    public function complex(Request $request)
+    {
+
+        // $query = Info_Details::query();
+        $complex = InfoDetails::all();
+        // $dateFilter = $request->date_filter;
+
+        // switch($dateFilter){
+        //     case 'today':
+        //         $query->whereDate('created_at',Carbon::today());
+        //         break;
+        //     case 'yesterday':
+        //         $query->wheredate('created_at',Carbon::yesterday());
+        //         break;
+        //     case 'this_week':
+        //         $query->whereBetween('created_at',[Carbon::now()->startOfWeek(),Carbon::now()->endOfWeek()]);
+        //         break;
+        //     case 'last_week':
+        //         $query->whereBetween('created_at',[Carbon::now()->subWeek(),Carbon::now()]);
+        //         break;
+        //     case 'this_month':
+        //         $query->whereMonth('created_at',Carbon::now()->month);
+        //         break;
+        //     case 'last_month':
+        //         $query->whereMonth('created_at',Carbon::now()->subMonth()->month);
+        //         break;
+        //     case 'this_year':
+        //         $query->whereYear('created_at',Carbon::now()->year);
+        //         break;
+        //     case 'last_year':
+        //         $query->whereYear('created_at',Carbon::now()->subYear()->year);
+        //         break;                       
+        // }
+            
+        // $complex = $query->get();
+            // ->orderBy(column: 'ticket.name')
+            // ->orderBy(column: 'ticket.created_at')
+            // ->orderBy(column: 'ticket.status')
+            // ->paginate(perPage: 5);
+
+        // return response()->view('tickets.complex',compact('complex','dateFilter'));
+        //    $search_text = $_GET['query'];
+        //    $commands = commands::where('command_line', 'LIKE', '%'.$search_text.'%')->get();
+        //    $personal_info=personal_info::all();
+        //    $interests=interests::all();
+           
+           return view('tickets.complex', compact('complex'));
+        //    return response()->view('tickets.index',compact('tickets','dateFilter'));        
     }
 
     public function add(Request $request)

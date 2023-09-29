@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Models\Personal_Details;
+use App\Models\Details_Info;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,12 +18,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(20)->create();
-        \App\Models\Ticket::factory(20)->create();
+  
+        // Personal_Info::factory()->count(50)->create();
+        // $this->call(class: InfoDetailsSeeder::class);
+    
+        \App\Models\InfoDetails::factory()->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
+        // \App\Models\Personal_Info::factory(50)->create([
+        //     'name' => $this->faker->name(),
+        //     'surname' => $this->faker->name(),
+        //     'mobile' => $this->faker->mobile(),
+        //     'email' => $this->faker->email(),
+        //     'email_verified_at' => $this->faker->email_verified_at(),
+        //     'gender' => $this->faker->gender(),
+        //     'interests' => $this->faker->interests(),
+        //     'city' => $this->faker->city(),
         // ]);
 
          // Fake data for today
