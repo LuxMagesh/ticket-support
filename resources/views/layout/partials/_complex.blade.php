@@ -64,7 +64,6 @@
             <th scope="col">Surname</th>
             <th scope="col">Email</th>
             <th scope="col">Mobile</th>
-            <th scope="col">Mobile</th>
             <th scope="col">City</th>
             <th scope="col">Gender</th>
             <th scope="col">Interests</th>
