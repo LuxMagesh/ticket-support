@@ -1,0 +1,72 @@
+Database Skillsets: Microsoft SQL Server
+
+
+- Top 10 customers by purchase (cost) - BIG SPENDERS 
+
+
+SELECT
+c.customer_id,
+SUM(CAST(p.amount as float)) AS total_amount,
+c.email,
+COUNT(p.amount) AS payments_count
+FROM
+customer c INNER JOIN payment p
+ON c.customer_id=p.customer_id
+GROUP BY c.customer_id
+ORDER BY total_amount desc
+LIMIT 10;
+
+
+- Top 10 customers by purchase (count) - QUANTITY OVER QUALITY
+
+SELECT TOP 10 * 
+       (CustomerID) AS TotalMoneySpent, 
+       SUM(Quantity*Price)
+   FROM 
+       tblCUSTOMER c
+   JOIN 
+       tblORDER o ON c.CustomerID = o.CustomerID
+   JOIN 
+       tblORDER_PRODUCT op ON o.OrderID = op.OrderID
+   JOIN 
+       tblPRODUCT p ON op.ProductID = p.ProductID
+   GROUP BY  
+       CustomerID
+   ORDER BY 
+       TotalMoneySpent DESC
+   GO
+   
+- Top 3 Sales People by Nett Profit on Sales 
+
+
+
+SELECT id, category, sales
+FROM (
+  SELECT p.id, 
+         MAX(category) category, 
+         SUM(o.quantity) sales,
+         ROW_NUMBER() OVER (PARTITION BY MAX(category) ORDER BY SUM(o.quantity) DESC) rn
+  FROM Products p INNER JOIN OrderItems o
+  ON o.prodID = p.id
+  GROUP BY p.id
+) t
+WHERE rn <= 3
+ORDER BY id;
+
+
+
+- Top 3 Sales People by Gross Sales value
+
+SELECT id, category, sales
+FROM (
+  SELECT p.id, 
+         MAX(category) category, 
+         SUM(o.quantity) sales,
+         ROW_NUMBER() OVER (PARTITION BY MAX(category) ORDER BY SUM(o.quantity) DESC) rn
+  FROM Products p INNER JOIN OrderItems o
+  ON o.prodID = p.id
+  GROUP BY p.id
+) t
+WHERE rn <= 3
+ORDER BY id;
+
