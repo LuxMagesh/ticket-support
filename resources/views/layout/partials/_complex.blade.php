@@ -9,7 +9,7 @@
             
             {{-- <label for="date_filter">Filter by Date:</label> --}}
 
-            {{-- <form method="get" action="{{ url('/tickets') }}">
+            <form method="get" action="{{ url('/complex') }}">
                 <div class="input-group">
                     <select class="form-select" name="date_filter">
                         <option value="">All Dates</option>
@@ -24,7 +24,7 @@
                         </select>
                     <button type="submit" class="btn btn-warning">Filter</button>
                 </div>
-            </form> --}}
+            </form>
 
         </div>
           {{-- <button type="button" class="btn btn-sm btn-outline-secondary">Share</button> --}}

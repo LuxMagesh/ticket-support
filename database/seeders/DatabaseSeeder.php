@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
   
         // Personal_Info::factory()->count(50)->create();
         // $this->call(class: InfoDetailsSeeder::class);
-    
+        \App\Models\Ticket::factory()->create();
         \App\Models\InfoDetails::factory()->create();
 
         // \App\Models\Personal_Info::factory(50)->create([

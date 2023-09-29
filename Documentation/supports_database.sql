@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2023 at 01:28 PM
+-- Generation Time: Sep 29, 2023 at 08:44 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -36,6 +36,39 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `info_details`
+--
+
+CREATE TABLE `info_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `mobile` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `interest` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `info_details`
+--
+
+INSERT INTO `info_details` (`id`, `surname`, `email`, `email_verified_at`, `mobile`, `gender`, `city`, `interest`, `created_at`, `updated_at`) VALUES
+(1, 'surname', 'email', '0000-00-00 00:00:00', 'mobile', 'gender', 'city', 'interest', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'surname', 'emaile', '0000-00-00 00:00:00', 'mobile', 'gender', 'city', 'interest', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'surname', 'emailc', '0000-00-00 00:00:00', 'mobile', 'gender', 'city', 'interest', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 'surname', 'emdfdgdflc', '0000-00-00 00:00:00', 'mobile', 'gender', 'city', 'interest', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'surname', 'emaild', '0000-00-00 00:00:00', 'mobile', 'gender', 'city', 'interest', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 'surname', 'emdfdfld', '0000-00-00 00:00:00', 'mobile', 'gender', 'city', 'interest', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 'surname', 'edfdgflc', '0000-00-00 00:00:00', 'mobile', 'gender', 'city', 'interest', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, 'surname', 'emafgdflc', '0000-00-00 00:00:00', 'mobile', 'gender', 'city', 'interest', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -113,6 +146,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('BgTv1sYV2rRfr866uQBhAPIt7r8fxFyKtyiIIyHb', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicFlMcFVuVE9GS3FEbVBURDNGU1c2dmRWSE1RNlBDU2g2VFZGb2RVayI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jb21wbGV4Ijt9fQ==', 1696012997),
 ('Hsz5ZeAXLqL2f0BSDbLks7u2AJ6Ur0mbjeoWdmV9', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQUdJYUdzZlFTQlZ6Q01kb3hVdUJ3OTM3M0ltWUVIVmJrdnhHQUU2NCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNDoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL3VzZXIvcHJvZmlsZSI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI5OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdGlja2V0cyI7fX0=', 1695926719);
 
 -- --------------------------------------------------------
@@ -187,6 +221,13 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `info_details`
+--
+ALTER TABLE `info_details`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `info_details_email_unique` (`email`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -237,6 +278,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `info_details`
+--
+ALTER TABLE `info_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `migrations`
