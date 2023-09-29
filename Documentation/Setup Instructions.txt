@@ -2,10 +2,15 @@ The Ticket Support App Setup Instructions
 
 1. Download the Zip Folder from Github and Place the project in your Htdocs folder
 
+	--> Github : https://github.com/LuxMagesh/ticket-support.git
+
+
 2. MySQL database file is available in the root folder it's called supports_database.sql and also in the Documentation Folder.
    basic create this in your phpmyadmin and import the database.
 
 3. Open the project using VS Code and open the Terminal and run the command "php artisan serve"
+
+	-->Project Start Up Link : http://127.0.0.1:8000/tickets/
 
 I hope all is in order , my machine had a compatibilty issue with the Docker environment, I hope this 
 will not damage my application. This forced me into an alternative solution.
