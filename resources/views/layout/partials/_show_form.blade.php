@@ -23,7 +23,7 @@
            
             </div>
             <div class="col">
-            <form action="{{ url('/tickets/{tickets}') }}" method="post">
+            <form action="{{ url('/tickets/'.$ticket->id) }}" method="post">
            {{ csrf_field() }}
            <div class="form-group">
             <label for="name">Name</label>

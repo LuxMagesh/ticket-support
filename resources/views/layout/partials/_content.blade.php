@@ -78,7 +78,7 @@
                 <td> {{$ticketss->status}} </td>
                 <td> {{$ticketss->name}} </td>
                 <td> {{$ticketss->created_at}} </td>
-                <td> <a href="tickets/{{ $ticketss->id}}" class="btn btn-info">Update</a> </td>
+                <td> <a href="tickets/{{$ticketss->id}}" class="btn btn-info">Update</a> </td>
               </tr>
             @endforeach
           </tbody>
