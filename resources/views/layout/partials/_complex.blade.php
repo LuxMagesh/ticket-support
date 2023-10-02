@@ -68,6 +68,7 @@
             <th scope="col">Gender</th>
             <th scope="col">Interests</th>
             <th scope="col">Date</th>
+            <th scope="col">Date</th>
 
           </tr>
         </thead>
@@ -81,6 +82,7 @@
               <td> {{$complexx->city}} </td>
               <td> {{$complexx->gender}} </td>
               <td> {{$complexx->interests}} </td>
+              <td> {{$complexx->created_at}} </td>
               <td> {{$complexx->created_at}} </td>
               {{-- <td> <a href="tickets/{{ $complexx->id}}" class="btn btn-info">Update</a> </td> --}}
             </tr>
